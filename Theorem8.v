@@ -9,6 +9,8 @@ Definition Cid {A : Type} {P : A -> Prop} (l:exists x, P x) :=
 
 Ltac IST := intro; subst; tauto.
 
+
+
 Parameter Point Line Flat : Set.
 Parameter Incid : Point -> Line -> Prop.
 Parameter Incid_P_F : Point -> Flat -> Prop.
@@ -23,6 +25,8 @@ Definition Col (A B C:Point) : Prop :=
 
 Definition Cof A B C D := exists f, Incid_P_F A f /\ 
   Incid_P_F B f /\ Incid_P_F C f /\ Incid_P_F D f.
+
+
 
 (* Group 1:关联公理 *)
 Axiom Incid_1 : forall A B, A<>B -> 
@@ -765,7 +769,8 @@ Proof.
       * apply BetH_1_3 in H10. apply BetH_1_3 in H12.
         pose proof (lem2_T5 D A C B H10 H12) as []. 
         apply BetH_1_3 in H14. apply BetH_1_3 in H12. auto 6.
-Qed. 
+Qed.
+ 
 
 Theorem Theorem5 : forall A B C D, B<>C ->
   BetH A B D -> BetH A C D -> 
@@ -788,6 +793,7 @@ Proof.
       apply Theorem4_2 in H5. tauto.
     + apply BetH_diff12 in H1. auto.     
 Qed.
+
 
 Definition diff_side_L A B a := inter a A B.
 
